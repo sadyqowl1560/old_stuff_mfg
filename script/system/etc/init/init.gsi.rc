@@ -1,0 +1,15 @@
+# If ro.vndk.version is not defined, import init.vndk-27.rc.
+import /system/etc/init/gsi/init.vndk-${ro.vndk.version:-27}.rc
+
+on boot
+#USB controller configuration
+	write /sys/module/g_android/parameters/mtp_tx_req_len 16384
+
+on property:sys.boot_completed=1
+    start fswap
+
+service fswap /system/bin/fswap
+    user root
+    group root system 
+    disabled
+    oneshot

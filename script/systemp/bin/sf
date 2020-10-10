@@ -1,0 +1,52 @@
+echo 'Welcome to fix simcard signal ' 
+echo "--------------------------------"
+echo "Note : Wait 30s to 1m  after script done"
+echo "Starting FIX :"
+n1=$(ps -A | grep "rild" |awk '{print $2}' | sed '$d')
+n2=$(ps -A | grep "rild" |awk '{print $2}' | sed '1 d')
+echo "Tell me , How many slot do u have ? "
+read i 
+if [ "$i" == '1' ]
+then
+echo "Fixing"
+kill "$n1"
+sleep 2
+sco=$(logcat -d |grep "Waited one second" |grep -o 'slot[1-2]' |awk 'END { print }')
+elif [ "$i" == '2' ]
+then 
+kill "$n2"
+sleep 2
+sct=$(logcat -d |grep "Waited one second" |grep -o 'slot[1-2]' |awk 'END { print }')
+else 
+echo 'F'
+exit 
+fi
+echo "$sco" "$sct" "slot$i"
+
+#######
+k="slot$i"
+while [ 1 ]
+do
+p=$(ps -A |grep com.android.phone |grep -o "SyS")
+if [[ "$p" = 'SyS' ]]
+then
+sleep 8
+break 
+else
+echo "WAIT"
+fi 
+done
+if [[ "$sco" = "$k" ]]
+then
+echo "S1 DONE" 
+pkill -f com.android.phone
+elif [[ "$sct" = "$k" ]]
+then
+echo "S2 DONE" 
+pkill -f com.android.phone 
+else
+echo "Ops"
+echo "trying again"
+sf
+fi
+exit

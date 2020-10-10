@@ -1,0 +1,2 @@
+sleep 5
+sswap -s -r /dev/block/vnswap0

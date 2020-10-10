@@ -1,0 +1,32 @@
+#system
+chmod 755 /system/bin/sf
+chmod 755 /system/bin/sf2
+chmod 755 /system/bin/sswap
+chmod 755 /system/bin/fswap
+chmod 755 /system/bin/sf1
+chmod 644 /system/etc/init/init.gsi.rc
+chmod 644 /system/etc/empty
+chmod 644 /system/lib/libprotobuf-cpp-shit.so
+chmod 644 /system/etc/permissions/qcom.fmradio.xml
+chmod 755 /system/app/FM2
+chmod 644 /system/app/FM2/FM2.apk
+chmod 755 /system/app/FM2/lib
+chmod 755 /system/app/FM2/lib/arm
+chmod 644 /system/framework/qcom.fmradio.jar
+chmod 644 /system/lib/fm_helium.so
+chmod 644 /system/lib/libqcomfm_jni.so
+#vendor
+chmod 755 /vendor/bin/hw/wpa_supplicant
+chmod 644 /vendor/etc/audio_output_policy.conf
+chmod 644 /vendor/etc/audio_policy_volumes.xml
+chmod 644 /vendor/etc/audio_effects_common.conf
+chmod 644 /vendor/etc/audio_policy_configuration_sec.xml
+chmod 644 /vendor/etc/a2dp_audio_policy_configuration.xml
+chmod 644 /vendor/etc/audio_platform_info_extcodec.xml
+chmod 644 /vendor/etc/audio_platform_info.xml
+chmod 644 /vendor/etc/audio_tuning_mixer.txt
+chmod 644 /vendor/etc/audio_effects_sec.xml
+chmod 644 /vendor/etc/audio_effects.xml
+chmod 644 /vendor/etc/audio_policy_configuration.xml
+chmod 644 /vendor/etc/init/android.hardware.camera.provider@2.4-service.rc
+chmod 644 /vendor/etc/init/vendor.samsung.hardware.camera.provider@2.4-service.rc

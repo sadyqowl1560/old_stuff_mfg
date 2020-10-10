@@ -1,0 +1,37 @@
+echo 'Welcome to fix simcard signal for 2 slot' 
+echo "--------------------------------"
+echo "Note : Wait 30s to 1m  after script done"
+echo "Starting FIX :"
+logcat -b all -c
+n2=$(pidof rild  | awk '{print $2}')
+i=2
+kill "$n2"
+sleep 2
+sct=$(logcat -d |grep "Waited one second" |grep -o 'slot[1-2]' |awk 'END { print }')
+#######
+k="slot$i"
+y=1
+while [ $y = 1 ]
+do
+logcat -d |grep "Service connected on"
+if [ "$?" = "0" ]
+then
+sleep 8
+echo "'--------' : Finally"
+y=0
+fi 
+echo "_||_ : Wait ....."
+echo "-------------"
+done
+#####
+if [ "$sct" = "$k" ]
+then
+echo "-_- : Finish ....." 
+pkill -f com.android.phone 
+service call statusbar 1
+sleep 3
+service call statusbar 2
+else
+echo "-_- : Error ....."
+sf2
+fi 

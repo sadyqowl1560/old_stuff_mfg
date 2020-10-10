@@ -1,0 +1,1 @@
+chcon u:object_r:hal_wifi_supplicant_default_exec:s0 /vendor/bin/hw/wpa_supplicant
